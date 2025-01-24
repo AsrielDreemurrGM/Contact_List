@@ -1,9 +1,14 @@
+import SearchBar from './components/SearchBar';
+import GlobalStyle, { Container } from './styles';
+
 function App() {
   return (
-    <div className="container">
-      <h1>Teste</h1>
-      <h2>1 + 1 = {1 + 1}</h2>
-    </div>
+    <>
+      <GlobalStyle />
+      <Container>
+        <SearchBar />
+      </Container>
+    </>
   );
 }
 
