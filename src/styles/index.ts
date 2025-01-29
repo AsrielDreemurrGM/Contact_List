@@ -10,12 +10,14 @@ export const GlobalStyle = createGlobalStyle`
 }
 `;
 
-export const Container = styled.div`
+export const MainContainer = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
+  padding: 10px;
   background-color: #f9f8fe;
+  overflow-y: auto;
 `;
 
 export default GlobalStyle;

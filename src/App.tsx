@@ -1,13 +1,15 @@
+import GlobalStyle, { MainContainer } from './styles';
 import SearchBar from './components/SearchBar';
-import GlobalStyle, { Container } from './styles';
+import ContactList from './containers/ContactList';
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <Container>
+      <MainContainer>
         <SearchBar />
-      </Container>
+        <ContactList />
+      </MainContainer>
     </>
   );
 }
