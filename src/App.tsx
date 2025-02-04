@@ -1,15 +1,33 @@
+import { Provider } from 'react-redux';
+
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 import GlobalStyle, { MainContainer } from './styles';
-import SearchBar from './components/SearchBar';
-import ContactList from './containers/ContactList';
+
+import store from './store';
+import Home from './pages/Home';
+import NewContact from './pages/NewContact';
+
+const routes = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />
+  },
+  {
+    path: 'newContact',
+    element: <NewContact />
+  }
+]);
 
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <MainContainer>
-        <SearchBar />
-        <ContactList />
-      </MainContainer>
+      <Provider store={store}>
+        <GlobalStyle />
+        <MainContainer>
+          <RouterProvider router={routes} />
+        </MainContainer>
+      </Provider>
     </>
   );
 }

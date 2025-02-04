@@ -1,6 +1,10 @@
+import { useSelector } from 'react-redux';
+
+import { ContactsContainer, ListOfContacts } from './styles';
 import Category from '../../components/Category';
 import Contact from '../../components/Contact';
-import { ContactsContainer, ListOfContacts } from './styles';
+
+import { RootReducer } from '../../store';
 
 const StarIcon = (
   <svg
@@ -24,15 +28,22 @@ const ContactsIcon = (
   </svg>
 );
 
-const ContactList = () => (
-  <ContactsContainer>
-    <ListOfContacts>
-      <Category icon={StarIcon} title={'Favoritos'} />
-      <Contact name={'Name Surname'} />
-      <Category icon={ContactsIcon} title={'Todos os Contatos'} />
-      <Contact name={'Name Surname'} />
-    </ListOfContacts>
-  </ContactsContainer>
-);
+const ContactList = () => {
+  const { contacts } = useSelector((state: RootReducer) => state.contacts);
+  return (
+    <ContactsContainer>
+      <ListOfContacts>
+        <Category icon={StarIcon} title={'Favoritos'} />
+        {contacts.map((t) => (
+          <Contact key={t.name} name={t.name} avatarImg={t.avatarImg} />
+        ))}
+        <Category icon={ContactsIcon} title={'Todos os Contatos'} />
+        {contacts.map((t) => (
+          <Contact key={t.name} name={t.name} avatarImg={t.avatarImg} />
+        ))}
+      </ListOfContacts>
+    </ContactsContainer>
+  );
+};
 
 export default ContactList;
