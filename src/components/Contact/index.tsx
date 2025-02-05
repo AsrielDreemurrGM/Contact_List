@@ -1,5 +1,13 @@
 import { useRef, useState } from 'react';
-import { ContactContent, ContactName, Picture, HiddenInput } from './styles';
+import {
+  ContactContent,
+  ContactName,
+  Picture,
+  HiddenInput,
+  ContactInfo,
+  Actions,
+  Button
+} from './styles';
 
 type ContactInfo = {
   name: string;
@@ -26,9 +34,15 @@ const Contact = ({ name }: ContactInfo) => {
   return (
     <>
       <ContactContent>
-        <Picture src={avatar} alt="Avatar" onClick={imageClick} />
-        <ContactName>{name}</ContactName>
+        <ContactInfo>
+          <Picture src={avatar} alt="Avatar" onClick={imageClick} />
+          <ContactName>{name}</ContactName>
+        </ContactInfo>
         <HiddenInput type="file" ref={inputRef} onChange={changeImage} />
+        <Actions>
+          <Button variant="edit">Editar</Button>
+          <Button variant="remove">Remover</Button>
+        </Actions>
       </ContactContent>
     </>
   );
