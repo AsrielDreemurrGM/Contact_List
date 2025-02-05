@@ -5,9 +5,9 @@ import {
   Picture,
   HiddenInput,
   ContactInfo,
-  Actions,
-  Button
+  Actions
 } from './styles';
+import { EditButton, RemoveButton } from '../../styles';
 
 type ContactInfo = {
   name: string;
@@ -40,8 +40,8 @@ const Contact = ({ name }: ContactInfo) => {
         </ContactInfo>
         <HiddenInput type="file" ref={inputRef} onChange={changeImage} />
         <Actions>
-          <Button variant="edit">Editar</Button>
-          <Button variant="remove">Remover</Button>
+          <EditButton>Editar</EditButton>
+          <RemoveButton>Remover</RemoveButton>
         </Actions>
       </ContactContent>
     </>

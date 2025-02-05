@@ -41,15 +41,3 @@ export const Actions = styled.div`
   display: flex;
   gap: 5px;
 `;
-
-export const Button = styled.button<{ variant: 'edit' | 'remove' }>`
-  padding: 5px 10px;
-  border: none;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-  background-color: ${({ variant }) =>
-    variant === 'edit' ? '#007bff' : '#dc3545'};
-`;
