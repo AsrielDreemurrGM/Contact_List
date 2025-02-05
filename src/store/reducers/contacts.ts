@@ -36,10 +36,19 @@ const contactsSlice = createSlice({
       state.contacts = [
         ...state.contacts.filter((c) => c.id !== action.payload)
       ];
+    },
+    changeAvatar: (
+      state,
+      action: PayloadAction<{ id: number; avatarImg: string }>
+    ) => {
+      const contact = state.contacts.find((c) => c.id === action.payload.id);
+      if (contact) {
+        contact.avatarImg = action.payload.avatarImg;
+      }
     }
   }
 });
 
-export const { remove } = contactsSlice.actions;
+export const { remove, changeAvatar } = contactsSlice.actions;
 
 export default contactsSlice.reducer;

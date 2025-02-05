@@ -35,11 +35,21 @@ const ContactList = () => {
       <ListOfContacts>
         <Category icon={StarIcon} title={'Favoritos'} />
         {contacts.map((t) => (
-          <Contact key={t.name} name={t.name} avatarImg={t.avatarImg} />
+          <Contact
+            id={t.id}
+            key={t.name}
+            name={t.name}
+            avatarImg={t.avatarImg}
+          />
         ))}
         <Category icon={ContactsIcon} title={'Todos os Contatos'} />
         {contacts.map((t) => (
-          <Contact key={t.name} name={t.name} avatarImg={t.avatarImg} />
+          <Contact
+            id={t.id}
+            key={t.name}
+            name={t.name}
+            avatarImg={t.avatarImg}
+          />
         ))}
       </ListOfContacts>
     </ContactsContainer>
