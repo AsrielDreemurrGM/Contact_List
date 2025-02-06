@@ -45,6 +45,10 @@ const contactsSlice = createSlice({
       if (contact) {
         contact.avatarImg = action.payload.avatarImg;
       }
+    },
+    addContact: (state, action: PayloadAction<Contact>) => {
+      state.contacts.push(action.payload);
+      state.contacts.sort((a, b) => a.name.localeCompare(b.name));
     }
   }
 });
