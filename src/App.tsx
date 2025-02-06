@@ -14,7 +14,7 @@ const routes = createBrowserRouter([
     element: <Home />
   },
   {
-    path: 'newContact',
+    path: 'new-contact',
     element: <NewContact />
   }
 ]);

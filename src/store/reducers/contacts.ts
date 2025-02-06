@@ -9,19 +9,19 @@ const initialState: ContactsState = {
   contacts: [
     {
       id: 1,
-      name: 'Eduardo',
+      name: 'Ambulância',
       avatarImg: 'https://static.thenounproject.com/png/693320-512.png',
       favorite: 1
     },
     {
       id: 2,
-      name: 'Eduardo2',
+      name: 'Bombeiros',
       avatarImg: 'https://static.thenounproject.com/png/693320-512.png',
       favorite: 1
     },
     {
       id: 3,
-      name: 'Eduardo3',
+      name: 'Polícia',
       avatarImg: 'https://static.thenounproject.com/png/693320-512.png',
       favorite: 1
     }

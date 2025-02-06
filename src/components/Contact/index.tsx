@@ -7,11 +7,11 @@ import {
   ContactContent,
   ContactName,
   Picture,
-  HiddenInput,
   ContactInfo,
   Actions
 } from './styles';
-import { EditButton, RemoveButton } from '../../styles';
+import { HiddenInput } from '../../styles';
+import { EditButton, RemoveButton } from '../../styles/buttons';
 
 type ContactProps = {
   id: number;

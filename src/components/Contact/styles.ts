@@ -33,10 +33,6 @@ export const ContactName = styled.span`
   overflow-wrap: break-word;
 `;
 
-export const HiddenInput = styled.input`
-  display: none;
-`;
-
 export const Actions = styled.div`
   display: flex;
   gap: 5px;
