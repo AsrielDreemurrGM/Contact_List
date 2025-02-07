@@ -53,6 +53,6 @@ const contactsSlice = createSlice({
   }
 });
 
-export const { remove, changeAvatar } = contactsSlice.actions;
+export const { remove, changeAvatar, addContact } = contactsSlice.actions;
 
 export default contactsSlice.reducer;

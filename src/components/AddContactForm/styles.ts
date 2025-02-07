@@ -26,19 +26,6 @@ export const Title = styled.h2`
   font-size: 20px;
 `;
 
-export const ImageUpload = styled.img`
-  margin-top: 20px;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background-color: lightgray;
-  cursor: pointer;
-
-  &:hover {
-    filter: brightness(0.8);
-  }
-`;
-
 export const Input = styled.input`
   width: 100%;
   max-width: 300px;

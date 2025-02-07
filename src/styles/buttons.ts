@@ -25,6 +25,7 @@ export const RemoveButton = styled(Button)`
 
 export const SaveButton = styled(Button)`
   background-color: #28a745;
+  font-size: 14px;
 `;
 
 export const CancelButton = styled(Button)`
