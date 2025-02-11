@@ -10,18 +10,21 @@ const initialState: ContactsState = {
     {
       id: 1,
       name: 'Ambulância',
+      phone: '192',
       avatarImg: 'https://static.thenounproject.com/png/693320-512.png',
       favorite: 1
     },
     {
       id: 2,
       name: 'Bombeiros',
+      phone: '193',
       avatarImg: 'https://static.thenounproject.com/png/693320-512.png',
       favorite: 1
     },
     {
       id: 3,
       name: 'Polícia',
+      phone: '190',
       avatarImg: 'https://static.thenounproject.com/png/693320-512.png',
       favorite: 1
     }
@@ -49,10 +52,17 @@ const contactsSlice = createSlice({
     addContact: (state, action: PayloadAction<Contact>) => {
       state.contacts.push(action.payload);
       state.contacts.sort((a, b) => a.name.localeCompare(b.name));
+    },
+    editContact: (state, action: PayloadAction<Contact>) => {
+      const index = state.contacts.findIndex((c) => c.id === action.payload.id);
+      if (index !== -1) {
+        state.contacts[index] = action.payload;
+      }
     }
   }
 });
 
-export const { remove, changeAvatar, addContact } = contactsSlice.actions;
+export const { remove, changeAvatar, addContact, editContact } =
+  contactsSlice.actions;
 
 export default contactsSlice.reducer;

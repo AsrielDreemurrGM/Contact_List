@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useState } from 'react';
 import { Container, Header, Input, Title } from './styles';
 import { HiddenInput } from '../../styles';
 import { CancelButton, SaveButton } from '../../styles/buttons';
@@ -6,6 +6,9 @@ import AvatarUpload from '../AvatarUpload';
 
 type Props = {
   avatar: string;
+  name?: string;
+  phone?: string;
+  title: string;
   onAvatarChange: (img: string) => void;
   onSave: (contactData: {
     name: string;
@@ -17,22 +20,25 @@ type Props = {
 
 const AddContactForm = ({
   avatar,
+  title = '',
+  name = '',
+  phone = '',
   onAvatarChange,
   onSave,
   onCancel
 }: Props) => {
-  const nameRef = useRef<HTMLInputElement>(null);
-  const phoneRef = useRef<HTMLInputElement>(null);
+  const [contactName, setContactName] = useState(name);
+  const [contactPhone, setContactPhone] = useState(phone);
   return (
     <Container>
       <Header>
         <CancelButton onClick={onCancel}>✖️</CancelButton>
-        <Title>Criar contato</Title>
+        <Title>{title}</Title>
         <SaveButton
           onClick={() => {
             onSave({
-              name: nameRef.current?.value.trim() || '',
-              phone: phoneRef.current?.value.trim() || '',
+              name: contactName.trim() || '',
+              phone: contactPhone.trim() || '',
               avatarImg: avatar
             });
           }}
@@ -43,8 +49,18 @@ const AddContactForm = ({
       <AvatarUpload avatarImg={avatar} onAvatarChange={onAvatarChange} />
       <HiddenInput />
 
-      <Input ref={nameRef} type="text" placeholder="Nome" />
-      <Input ref={phoneRef} type="tel" placeholder="Telefone" />
+      <Input
+        value={contactName}
+        type="text"
+        onChange={(e) => setContactName(e.target.value)}
+        placeholder="Nome"
+      />
+      <Input
+        value={contactPhone}
+        onChange={(e) => setContactPhone(e.target.value.replace(/\D/g, ''))}
+        type="tel"
+        placeholder="Telefone"
+      />
     </Container>
   );
 };

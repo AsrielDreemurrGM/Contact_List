@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux';
 import AddContactForm from '../../components/AddContactForm';
 import { addContact } from '../../store/reducers/contacts';
 
-const DEFAULT_IMAGE = 'https://static.thenounproject.com/png/693320-512.png';
+export const DEFAULT_IMAGE =
+  'https://static.thenounproject.com/png/693320-512.png';
 
 const AddContact = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const AddContact = () => {
 
   return (
     <AddContactForm
+      title="Criar contato"
       onCancel={handleCancel}
       onSave={handleSave}
       avatar={avatar}
