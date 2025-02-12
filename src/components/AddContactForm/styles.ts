@@ -25,6 +25,10 @@ export const Header = styled.div`
 export const Title = styled.h2`
   font-size: 20px;
   margin-left: 50px;
+
+  @media (max-width: 767px) {
+    margin: 0;
+  }
 `;
 
 export const Input = styled.input`
@@ -40,6 +44,7 @@ export const Input = styled.input`
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
+
   svg {
     cursor: pointer;
     margin-right: 10px;

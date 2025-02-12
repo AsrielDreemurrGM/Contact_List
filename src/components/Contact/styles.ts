@@ -36,4 +36,8 @@ export const ContactName = styled.span`
 export const Actions = styled.div`
   display: flex;
   gap: 5px;
+
+  @media (max-width: 767px) {
+    margin-left: 10px;
+  }
 `;

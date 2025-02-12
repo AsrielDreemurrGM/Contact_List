@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ContactsContainer = styled.div`
-  width: 90%;
+  width: 100%;
   max-width: 500px;
   margin-top: 20px;
   padding: 10px;
