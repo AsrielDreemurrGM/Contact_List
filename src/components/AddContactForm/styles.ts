@@ -24,6 +24,7 @@ export const Header = styled.div`
 
 export const Title = styled.h2`
   font-size: 20px;
+  margin-left: 50px;
 `;
 
 export const Input = styled.input`
@@ -34,4 +35,13 @@ export const Input = styled.input`
   border: 1px solid lightgray;
   border-radius: 8px;
   font-size: 16px;
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  svg {
+    cursor: pointer;
+    margin-right: 10px;
+  }
 `;

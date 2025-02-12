@@ -47,13 +47,15 @@ const EditContact = () => {
   };
   return contact ? (
     <AddContactForm
-      title="Editar Contato"
+      id={contact.id}
+      title="Editar contato"
       onCancel={() => navigate('/')}
       onSave={handleSave}
       avatar={avatar}
       onAvatarChange={setAvatar}
       name={contact.name}
       phone={contactPhone}
+      favorite={contact.favorite}
     />
   ) : null;
 };

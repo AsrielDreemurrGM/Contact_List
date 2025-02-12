@@ -58,11 +58,22 @@ const contactsSlice = createSlice({
       if (index !== -1) {
         state.contacts[index] = action.payload;
       }
+    },
+    favoriteContact: (state, action: PayloadAction<number>) => {
+      const contact = state.contacts.find((c) => c.id === action.payload);
+      if (contact) {
+        contact.favorite = contact.favorite ? 0 : 1;
+      }
     }
   }
 });
 
-export const { remove, changeAvatar, addContact, editContact } =
-  contactsSlice.actions;
+export const {
+  remove,
+  changeAvatar,
+  addContact,
+  editContact,
+  favoriteContact
+} = contactsSlice.actions;
 
 export default contactsSlice.reducer;
