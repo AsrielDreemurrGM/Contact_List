@@ -28,17 +28,34 @@ const ContactsIcon = (
   </svg>
 );
 
-const ContactList = () => {
+const ContactList = ({ searchQuery }: { searchQuery: string }) => {
   const { contacts } = useSelector((state: RootReducer) => state.contacts);
 
   const favoriteContacts = contacts.filter((contact) => contact.favorite === 1);
   const allContacts = contacts.filter((contact) => contact.favorite === 0);
 
+  const removeAccents = (names: string) => {
+    return names.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  };
+
+  const normalizedSearchQuery = removeAccents(searchQuery.toLowerCase());
+
+  const filteredFavoriteContacts = favoriteContacts.filter((contact) =>
+    removeAccents(contact.name.toLowerCase()).includes(
+      removeAccents(normalizedSearchQuery)
+    )
+  );
+  const filteredAllContacts = allContacts.filter((contact) =>
+    removeAccents(contact.name.toLowerCase()).includes(
+      removeAccents(normalizedSearchQuery)
+    )
+  );
+
   return (
     <ContactsContainer>
       <ListOfContacts>
         <Category icon={StarIcon} title={'Favoritos'} />
-        {favoriteContacts.map((contact) => (
+        {filteredFavoriteContacts.map((contact) => (
           <Contact
             id={contact.id}
             key={contact.name}
@@ -47,7 +64,7 @@ const ContactList = () => {
           />
         ))}
         <Category icon={ContactsIcon} title={'Todos os Contatos'} />
-        {allContacts.map((contact) => (
+        {filteredAllContacts.map((contact) => (
           <Contact
             id={contact.id}
             key={contact.name}

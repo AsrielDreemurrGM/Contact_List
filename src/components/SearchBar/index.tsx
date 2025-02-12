@@ -1,11 +1,23 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import * as styles from './styles';
 
-const SearchBar = () => {
+type SearchBarProps = {
+  onSearch: (query: string) => void;
+};
+
+const SearchBar = ({ onSearch }: SearchBarProps) => {
   const inputReference = useRef<HTMLInputElement>(null);
 
   const iconClick = () => {
     inputReference.current?.focus();
+  };
+
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    onSearch(query);
   };
 
   return (
@@ -22,8 +34,10 @@ const SearchBar = () => {
       </styles.IconWrapper>
       <styles.Input
         ref={inputReference}
+        value={searchQuery}
         type="text"
         placeholder="Pesquisar contatos"
+        onChange={handleSearch}
       />
     </styles.SearchContainer>
   );
