@@ -30,25 +30,29 @@ const ContactsIcon = (
 
 const ContactList = () => {
   const { contacts } = useSelector((state: RootReducer) => state.contacts);
+
+  const favoriteContacts = contacts.filter((contact) => contact.favorite === 1);
+  const allContacts = contacts.filter((contact) => contact.favorite === 0);
+
   return (
     <ContactsContainer>
       <ListOfContacts>
         <Category icon={StarIcon} title={'Favoritos'} />
-        {contacts.map((t) => (
+        {favoriteContacts.map((contact) => (
           <Contact
-            id={t.id}
-            key={t.name}
-            name={t.name}
-            avatarImg={t.avatarImg}
+            id={contact.id}
+            key={contact.name}
+            name={contact.name}
+            avatarImg={contact.avatarImg}
           />
         ))}
         <Category icon={ContactsIcon} title={'Todos os Contatos'} />
-        {contacts.map((t) => (
+        {allContacts.map((contact) => (
           <Contact
-            id={t.id}
-            key={t.name}
-            name={t.name}
-            avatarImg={t.avatarImg}
+            id={contact.id}
+            key={contact.name}
+            name={contact.name}
+            avatarImg={contact.avatarImg}
           />
         ))}
       </ListOfContacts>
