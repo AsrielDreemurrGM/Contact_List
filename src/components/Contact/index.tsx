@@ -4,7 +4,7 @@ import { changeAvatar, remove } from '../../store/reducers/contacts';
 
 import AvatarUpload from '../AvatarUpload';
 import { ContactContent, ContactName, ContactInfo, Actions } from './styles';
-import { EditButton, RemoveButton } from '../../styles/buttons';
+import { RemoveButton } from '../../styles/buttons';
 import { useNavigate } from 'react-router-dom';
 
 type ContactProps = {
@@ -21,13 +21,13 @@ const Contact = ({ id, name, avatarImg }: ContactProps) => {
     dispatch(changeAvatar({ id, avatarImg: newAvatar }));
   };
 
-  const handleEditButtonClick = () => {
+  const handleClick = () => {
     navigate(`/edit-contact/${id}`);
   };
 
   return (
     <>
-      <ContactContent>
+      <ContactContent onClick={handleClick}>
         <ContactInfo>
           <AvatarUpload
             onAvatarChange={handleAvatarChange}
@@ -36,7 +36,6 @@ const Contact = ({ id, name, avatarImg }: ContactProps) => {
           <ContactName>{name}</ContactName>
         </ContactInfo>
         <Actions>
-          <EditButton onClick={handleEditButtonClick}>Editar</EditButton>
           <RemoveButton onClick={() => dispatch(remove(id))}>
             Remover
           </RemoveButton>

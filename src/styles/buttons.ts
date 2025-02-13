@@ -15,10 +15,6 @@ const Button = styled.button`
   }
 `;
 
-export const EditButton = styled(Button)`
-  background-color: #007bff;
-`;
-
 export const RemoveButton = styled(Button)`
   background-color: #dc3545;
 `;
