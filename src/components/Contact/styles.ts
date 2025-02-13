@@ -10,6 +10,10 @@ export const ContactContent = styled.li`
   cursor: pointer;
   border-radius: 8px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    filter: brightness(0.9);
+  }
 `;
 
 export const Picture = styled.img`
