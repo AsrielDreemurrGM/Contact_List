@@ -16,6 +16,7 @@ const EditContact = () => {
 
   const [avatar, setAvatar] = useState(contact?.avatarImg || DEFAULT_IMAGE);
   const [contactPhone, setContactPhone] = useState(contact?.phone || '');
+  const [contactEmail, setContactEmail] = useState(contact?.email || '');
 
   useEffect(() => {
     if (!contact) {
@@ -23,16 +24,24 @@ const EditContact = () => {
     } else {
       setAvatar(contact.avatarImg);
       setContactPhone(contact.phone);
+      setContactEmail(contact.email);
     }
   }, [contact, navigate]);
 
   const handleSave = (contactData: {
     name: string;
     phone: string;
+    email: string;
     avatarImg: string;
   }) => {
     if (!contactData.name.trim() || !contactData.phone.trim()) {
       alert('Nome e Telefone são obrigatórios.');
+      return;
+    }
+
+    const emailMustHave = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (contactData.email && !emailMustHave.test(contactData.email)) {
+      alert('Por favor, insira um e-mail válido (ex: email@exemplo.com).');
       return;
     }
 
@@ -55,6 +64,7 @@ const EditContact = () => {
       onAvatarChange={setAvatar}
       name={contact.name}
       phone={contactPhone}
+      email={contactEmail}
       favorite={contact.favorite}
     />
   ) : null;

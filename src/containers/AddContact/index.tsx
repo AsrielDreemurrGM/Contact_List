@@ -16,10 +16,17 @@ const AddContact = () => {
   const handleSave = (contactData: {
     name: string;
     phone: string;
+    email: string;
     avatarImg: string;
   }) => {
     if (!contactData.name.trim() || !contactData.phone.trim()) {
       alert('Nome e Telefone são obrigatórios.');
+      return;
+    }
+
+    const emailMustHave = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (contactData.email && !emailMustHave.test(contactData.email)) {
+      alert('Por favor, insira um e-mail válido (ex: email@exemplo.com).');
       return;
     }
 

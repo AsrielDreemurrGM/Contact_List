@@ -11,12 +11,14 @@ type Props = {
   avatar: string;
   name?: string;
   phone?: string;
+  email?: string;
   title: string;
   favorite?: number;
   onAvatarChange: (img: string) => void;
   onSave: (contactData: {
     name: string;
     phone: string;
+    email: string;
     avatarImg: string;
     favorite: number;
   }) => void;
@@ -29,6 +31,7 @@ const AddContactForm = ({
   title = '',
   name = '',
   phone = '',
+  email = '',
   favorite = 0,
   onAvatarChange,
   onSave,
@@ -37,15 +40,14 @@ const AddContactForm = ({
   const dispatch = useDispatch();
   const [contactName, setContactName] = useState(name);
   const [contactPhone, setContactPhone] = useState(phone);
-  const [isFavorite, setIsFavorite] = useState(favorite === 1); // Estado para controle local de favorito
+  const [contactEmail, setContactEmail] = useState(email);
+  const [isFavorite, setIsFavorite] = useState(favorite === 1);
 
-  // Função para alternar o status de favorito
   const favoriteClick = () => {
-    // Se o id existir, atualiza o estado global (Redux) e local (isFavorite)
     if (id !== undefined) {
-      dispatch(favoriteContact(id)); // Dispara a ação no Redux
+      dispatch(favoriteContact(id));
     }
-    setIsFavorite(!isFavorite); // Alterna o estado local
+    setIsFavorite(!isFavorite);
   };
 
   return (
@@ -56,7 +58,7 @@ const AddContactForm = ({
         <Wrapper>
           <svg
             onClick={favoriteClick}
-            fill={isFavorite ? 'gold' : 'none'} // Aplica a cor dourada se for favorito
+            fill={isFavorite ? 'gold' : 'none'}
             viewBox="0 0 24 24"
             width="24"
             height="24"
@@ -71,8 +73,9 @@ const AddContactForm = ({
               onSave({
                 name: contactName.trim() || '',
                 phone: contactPhone.trim() || '',
+                email: contactEmail,
                 avatarImg: avatar,
-                favorite: isFavorite ? 1 : 0 // Passa o estado de favorito ao salvar
+                favorite: isFavorite ? 1 : 0
               });
             }}
           >
@@ -88,12 +91,20 @@ const AddContactForm = ({
         type="text"
         onChange={(e) => setContactName(e.target.value)}
         placeholder="Nome"
+        required
       />
       <Input
         value={contactPhone}
         onChange={(e) => setContactPhone(e.target.value.replace(/\D/g, ''))}
         type="tel"
         placeholder="Telefone"
+        required
+      />
+      <Input
+        value={contactEmail}
+        onChange={(e) => setContactEmail(e.target.value)}
+        type="email"
+        placeholder="E-mail"
       />
     </Container>
   );

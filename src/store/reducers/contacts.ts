@@ -11,6 +11,7 @@ const initialState: ContactsState = {
       id: 1,
       name: 'Ambulância',
       phone: '192',
+      email: '',
       avatarImg: 'https://static.thenounproject.com/png/693320-512.png',
       favorite: 1
     },
@@ -18,6 +19,7 @@ const initialState: ContactsState = {
       id: 2,
       name: 'Bombeiros',
       phone: '193',
+      email: '',
       avatarImg: 'https://static.thenounproject.com/png/693320-512.png',
       favorite: 1
     },
@@ -25,6 +27,7 @@ const initialState: ContactsState = {
       id: 3,
       name: 'Polícia',
       phone: '190',
+      email: '',
       avatarImg: 'https://static.thenounproject.com/png/693320-512.png',
       favorite: 1
     }
