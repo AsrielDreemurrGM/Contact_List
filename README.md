@@ -47,4 +47,4 @@
         <pre><code>npm start</code></pre>
     </ol>
     <h2>🌐 Live Demo</h2>
-    <p><a href="https://lista-de-contatos-neon.vercel.app" target="_blank">Contact List - Vercel</a></p>
+    <p><a href="https://contact-list-application.vercel.app/" target="_blank">Contact List - Vercel</a></p>
